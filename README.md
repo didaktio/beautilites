@@ -15,7 +15,7 @@ Javascript is awesome. It's a dynamic, powerful, and most importantly, fun langu
 * [Ramda](https://ramdajs.com/)
 * [spacetime](https://github.com/spencermountain/spacetime)
 
-and so on. To these we can add *Beautilities*: a set of very handy functions for commonplace requirements like changing the casing of strings (and entire objects), comparing arrays, capitalising strings, parsing and
+and so on. To these we can add Beautilities: a set of very handy functions for commonplace requirements like changing the casing of strings (and entire objects), comparing arrays, capitalising strings, parsing and
 formatting dates, working with currencies, simple wait functions, generating IDs, and so on. This is an ultra-lightweight library that'll save you time, energy, and bytes. Beautilities is also an ever-evolving project;
 there are no doubt more things to add, as in time there will be things to take away. Such is the nature of software.
 
@@ -34,23 +34,23 @@ Containing the following modules, Beautilities is arranged very simplistically:
 Everything is commented and strong-typed. Very handy is the naming convention of methods specific to data types; for example, all string manipulation function names begin with `str`. Your code editors intellisense will present a popup as soon as you type 'str', and you'll be able to quickly select the required function. The same goes for objects, e.g., `objCamelifyKeys`.
 
 ### Popular Functions
-`countryToCode` Convert a country full name to its ISO two- or three-letter code.
-`getCurrency` Get useful information about a currency such as the symbol, plural name, and decimal points.
-`genId` Generate a strong ID. Crypto will be used if it's available, e.g., in Node.js.
-`wait` A simple promise which resolves after a defined number of seconds.
-`paramOptionsToString` Convert a key-value parameter map to an API-friendly string.
-`strSnakeToCamel` Convert snake (or underscore_casing) case string to camelCase.
-`isDomainOrURL` Check whether a string is a domain or a URL.
-`strCapitalise` Capitalise the first letter of a string.
-`objOmitProp` Omit specific properties from an object by key names.
-`objIsEqual` Compare two objects for equality.
-`objKeyFromValue` Get a property's key name from it's value.
-`objFlatten` Completely flatten an object, regardless of nesting.
-`objArrDeepMerge` Merge objects and the contained arrays.
-[Typescript] `LiteralUnion` Combine literal types with non-literals, thereby avoiding linting and compile errors.
-[Typescript] `Omit` Omit a property from an interface using its key.
-[Typescript] `OmitKey` Omit a non-typed property from an interface.
-[Typescript] `DeepOptional` Make all properties at every of an interface optional.
+`countryToCode` Convert a country full name to its ISO two- or three-letter code./
+`getCurrency` Get useful information about a currency such as the symbol, plural name, and decimal points./
+`genId` Generate a strong ID. Crypto will be used if it's available, e.g., in Node.js./
+`wait` A simple promise which resolves after a defined number of seconds./
+`paramOptionsToString` Convert a key-value parameter map to an API-friendly string./
+`strSnakeToCamel` Convert snake (or underscore_casing) case string to camelCase./
+`isDomainOrURL` Check whether a string is a domain or a URL./
+`strCapitalise` Capitalise the first letter of a string./
+`objOmitProp` Omit specific properties from an object by key names./
+`objIsEqual` Compare two objects for equality./
+`objKeyFromValue` Get a property's key name from it's value./
+`objFlatten` Completely flatten an object, regardless of nesting./
+`objArrDeepMerge` Merge objects and the contained arrays./
+[Typescript] `LiteralUnion` Combine literal types with non-literals, thereby avoiding linting and compile errors./
+[Typescript] `Omit` Omit a property from an interface using its key./
+[Typescript] `OmitKey` Omit a non-typed property from an interface./
+[Typescript] `DeepOptional` Make all properties at every of an interface optional./
 
 
 ### Real-world Usage
