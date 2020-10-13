@@ -1,0 +1,16 @@
+{
+  "name": "putils",
+  "version": "1.0.0",
+  "description": "Utilities for Javascript and Typscript.",
+  "main": "index.js",
+  "types": "index.ts",
+  "scripts": {
+    "build": "tsc && cp package.json dist && npm pack ./dist"
+  },
+  "dependencies": {
+    "date-fns": "^2.16.1"
+  },
+  "devDependencies": {
+    "@types/node": "^14.11.8",
+  }
+}
