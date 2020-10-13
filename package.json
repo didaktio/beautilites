@@ -1,12 +1,11 @@
 {
   "name": "beautilites",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Utilities for Javascript and Typescript.",
   "main": "index.js",
-  "types": "index.ts",
   "scripts": {
     "deploy": "tsc && npm publish",
-    "deploy:patch": "tsc && npm-version patch && npm publish"
+    "deploy:patch": "tsc && npm version patch -f && npm publish"
   },
   "dependencies": {
     "date-fns": "^2.16.1"
@@ -17,5 +16,9 @@
   "repository": {
     "directory": "git",
     "url": "https://github.com/didaktio/beautilites"
-  }
+  },
+  "files": [
+    "*.d.ts",
+    "*.js"
+  ]
 }
