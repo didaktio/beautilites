@@ -1,7 +1,12 @@
 {
+  "author": {
+    "name": "Jai Preston",
+    "email": "j@didakt.io",
+    "url": "https://jaipreston.com"
+  },
   "name": "beautilites",
   "version": "1.0.4",
-  "description": "Utilities for Javascript and Typescript.",
+  "description": "Lightweight set of useful utilities for Javascript and Typescript.",
   "main": "index.js",
   "scripts": {
     "deploy": "tsc && npm publish",
@@ -21,5 +26,25 @@
     "*.d.ts",
     "*.js",
     "README.md"
-  ]
+  ],
+  "keywords": [
+    "javascript utilities",
+    "utilities",
+    "typescript",
+    "typescript utilities",
+    "date functions",
+    "currencies",
+    "countries",
+    "country list",
+    "currency list",
+    "id",
+    "change casing javascript",
+    "datetime",
+    "string utils",
+    "object utils",
+    "light utils library",
+    "js utils",
+    "putils"
+  ],
+  "license": "UNLICENSED"
 }
