@@ -285,4 +285,17 @@ export declare type CountryName = typeof COUNTRIES[number];
  * @param country Two- or three-letter code, or full name of country.
  * @returns Either full name or code of country.
  */
-export declare const convertCountry: (country: string) => any;
+export declare function convertCountry(country: string): any;
+/**
+* Convert country ISO code to country full name.
+* @param country ISO code of country.
+* @returns Full name of country.
+*/
+export declare function codeToCountry(code: string): string | undefined;
+/**
+ * Convert country full name to its *ISO 3166-1 alpha* code.
+ * @param country Full name of country.
+ * @param iso ISO format of code to return (two- or three-letter).
+ * @returns ISO code of country.
+ */
+export declare function countryToCode(country: CountryName, iso?: 2 | 3): any;

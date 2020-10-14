@@ -12,7 +12,7 @@ const string_1 = require("./string");
  * 'undefined:remove' will remove them.
  * @returns Object without property.
  */
-exports.objRemoveFalsyProps = (obj, options = { null: true, 'undefined:remove': true, 'undefined:null': false, emptyString: true }) => {
+function objRemoveFalsyProps(obj, options = { null: true, 'undefined:remove': true, 'undefined:null': false, emptyString: true }) {
     for (const k of Object.keys(obj)) {
         if (options.null && obj[k] === null
             || options.emptyString && obj[k] === ''
@@ -23,18 +23,20 @@ exports.objRemoveFalsyProps = (obj, options = { null: true, 'undefined:remove': 
         else if (typeof obj[k] === 'object'
             && obj[k] !== null
             && !Array.isArray(obj[k])
-            && !exports.objDeepExtractKeys(obj[k]).includes('lc'))
-            obj[k] = exports.objRemoveFalsyProps(obj[k], options);
+            && !objDeepExtractKeys(obj[k]).includes('lc'))
+            obj[k] = objRemoveFalsyProps(obj[k], options);
     }
     return obj || {};
-};
+}
+exports.objRemoveFalsyProps = objRemoveFalsyProps;
+;
 /**
  * Check whether two objects are identical.
  * @param obj1 Object one of comparison.
  * @param obj2 Object two of comparison.
  * @returns Boolean.
  */
-exports.objIsEqual = (obj1, obj2) => {
+function objIsEqual(obj1, obj2) {
     if (obj1 === obj2)
         return true;
     // if both x and y are null or undefined and exactly the same
@@ -59,7 +61,7 @@ exports.objIsEqual = (obj1, obj2) => {
         if (typeof (obj1[p]) !== 'object')
             return false;
         // Numbers, Strings, Functions, Booleans must be strictly equal
-        if (!exports.objIsEqual(obj1[p], obj2[p]))
+        if (!objIsEqual(obj1[p], obj2[p]))
             return false;
         // Objects and Arrays must be tested recursively
     }
@@ -68,7 +70,8 @@ exports.objIsEqual = (obj1, obj2) => {
             return false;
     // allows x[ p ] to be set to undefined
     return true;
-};
+}
+exports.objIsEqual = objIsEqual;
 /**
  * Omit specific prop(s) from an object.
  * @param obj Object containing unwanted prop(s).
@@ -88,20 +91,29 @@ exports.objOmitProp = objOmitProp;
  * @param obj Object with non-snake case keys.
  * @returns New object with changed keys.
  */
-exports.objCamelifyKeys = (obj) => Object.keys(obj).reduce((acc, curr) => ({ ...acc, [string_1.strSnakeToCamel(curr)]: obj[curr] }), {});
+function objCamelifyKeys(obj) {
+    return Object.keys(obj).reduce((acc, curr) => (Object.assign(Object.assign({}, acc), { [string_1.strSnakeToCamel(curr)]: obj[curr] })), {});
+}
+exports.objCamelifyKeys = objCamelifyKeys;
 /**
  * Change all object keys to snake casing (underscore, e.g., created_at).
  * @param obj Object with non-snake case keys.
  * @returns New object with changed keys.
  */
-exports.objSnakeifyKeys = (obj) => Object.keys(obj).reduce((acc, curr) => ({ ...acc, [string_1.strCamelToSnake(curr)]: obj[curr] }), {});
+function objSnakeifyKeys(obj) {
+    return Object.keys(obj).reduce((acc, curr) => (Object.assign(Object.assign({}, acc), { [string_1.strCamelToSnake(curr)]: obj[curr] })), {});
+}
+exports.objSnakeifyKeys = objSnakeifyKeys;
 /**
  * Get the key of a property using its value.
  * @param object Object including value.
  * @param value Value of property for which you want the key.
  * @returns [string] Property key.
  */
-exports.objKeyFromVal = (object, value) => Object.keys(object).find(key => object[key] === value);
+function objKeyFromVal(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+}
+exports.objKeyFromVal = objKeyFromVal;
 /**
  * Completely flattens an object, regardless of nest depth. NOTE: Be mindful of properties with identical keys at different levels of the nest;
  * to omit properties from the operation, include them in the exceptions.
@@ -109,17 +121,23 @@ exports.objKeyFromVal = (object, value) => Object.keys(object).find(key => objec
  * @param extras Exceptions: string of keys to omit from flatten operations.
  * @returns Flattened object.
  */
-exports.objFlatten = (obj, extras = { exceptions: [''] }) => Object.assign({}, ...function flatten(o) {
-    return [].concat(...Object.keys(o)
-        .map(k => (typeof o[k] === 'object' && o[k] !== null && !Array.isArray(o[k]) && !extras.exceptions.includes(k)) ? flatten(o[k]) : ({ [k]: o[k] })));
-}(obj));
+function objFlatten(obj, extras = { exceptions: [''] }) {
+    return Object.assign({}, ...function flatten(o) {
+        return [].concat(...Object.keys(o)
+            .map(k => (typeof o[k] === 'object' && o[k] !== null && !Array.isArray(o[k]) && !extras.exceptions.includes(k)) ? flatten(o[k]) : ({ [k]: o[k] })));
+    }(obj));
+}
+exports.objFlatten = objFlatten;
 /**
  * Extract all keys from object and return them as an array. Parent keys of nested property are included unless includeParents=false
  * is given as an option. Note: this is only made for nested objects; for non-nested objects, use a simple Object.keys.
  * @param obj Deeply nested object.
  * @returns Array of keys.
  */
-exports.objDeepExtractKeys = (obj, options = { includeParents: true }) => options.includeParents ? [...Object.keys(obj), ...Object.keys(exports.objFlatten(obj))] : Object.keys(exports.objFlatten(obj));
+function objDeepExtractKeys(obj, options = { includeParents: true }) {
+    return options.includeParents ? [...Object.keys(obj), ...Object.keys(objFlatten(obj))] : Object.keys(objFlatten(obj));
+}
+exports.objDeepExtractKeys = objDeepExtractKeys;
 function objMerge(...objects) {
     const merge = {};
     for (const obj of objects)

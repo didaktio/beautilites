@@ -4,13 +4,13 @@
  * @param date JS Date Object or ISO.
  * @returns JS Date Object.
  */
-export declare const parseDate: (date: Date | string) => Date;
+export declare function parseDate(date: Date | string): Date;
 /**
  * Extract and format the time of a date into am/pm format.
  * @param date JS Date Object or ISO.
  * @returns Formatted date(time) string.
  */
-export declare const formatTime: (date: Date | string) => string;
+export declare function formatTime(date: Date | string): string;
 export declare type DateFormats = 'name-short' | 'name-full' | 'name-md' | 'numeric-slash' | 'numeric-dot';
 export interface FormateDateExtras {
     withTime: boolean;
@@ -30,7 +30,7 @@ export interface FormateDateExtras {
  * * `withTime` Boolean indicating whether to include the time in am/pm format, e.g., *Thu, 3rd Jan 2019 at 2:00PM*.
  * @returns Formatted date string.
  */
-export declare const formatDate: (date: Date | string, into: DateFormats, extras?: FormateDateExtras) => string;
+export declare function formatDate(date: Date | string, into: DateFormats, extras?: FormateDateExtras): string;
 /**
  * Convert seconds to hours, minutes, and seconds.
  * @param seconds Number of seconds to convert.
@@ -56,6 +56,6 @@ export declare function toHHMMSS(seconds: number, extras?: {
  * * `withSeconds` Boolean indicating whether to include seconds in the returned string.
  * @returns Formatted duration string.
  */
-export declare const formatDuration: (duration: string | number, extras?: {
+export declare function formatDuration(duration: string | number, extras?: {
     withSeconds: boolean;
-}) => string;
+}): string;

@@ -4,7 +4,7 @@
     "email": "j@didakt.io",
     "url": "https://jaipreston.com"
   },
-  "name": "beautilites",
+  "name": "beautilities",
   "version": "1.1.0",
   "description": "Lightweight set of useful utilities for Javascript and Typescript.",
   "main": "index.js",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "directory": "git",
-    "url": "https://github.com/didaktio/beautilites"
+    "url": "https://github.com/didaktio/beautilities"
   },
   "files": [
     "*.d.ts",

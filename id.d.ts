@@ -5,11 +5,11 @@
  * @param useCrypto Boolean indicating whether to use the *crypto* library if it is available.
  * @returns New ID [string].
  */
-export declare const genId: (prefix?: string | undefined, chars?: 6 | 10 | 20 | 30, useCrypto?: boolean) => string;
+export declare function genId(prefix?: string, chars?: 6 | 10 | 20 | 30, useCrypto?: boolean): string;
 /**
  * Generate a random string of numbers. Under the hood: A random number is multiplied by a quadrillion, then trimmed to 10
  * characters or otherwise.
  * @param chars Character length of string to generate. Defaults to 10.
  * @returns Random string [string].
  */
-export declare const genRandomNumberString: (chars?: 5 | 10 | 15) => string;
+export declare function genRandomNumberString(chars?: 5 | 10 | 15): string;

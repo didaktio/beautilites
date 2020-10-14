@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.convertCountry = exports.COUNTRY_CODES_3 = exports.COUNTRY_CODES_2 = exports.COUNTRIES = void 0;
+exports.countryToCode = exports.codeToCountry = exports.convertCountry = exports.COUNTRY_CODES_3 = exports.COUNTRY_CODES_2 = exports.COUNTRIES = void 0;
 const object_1 = require("./object");
 /**
  * List of countries, by full name. This is likely all you will ever need but if there are
@@ -741,18 +741,27 @@ exports.COUNTRY_CODES_3 = {
  * @param country Two- or three-letter code, or full name of country.
  * @returns Either full name or code of country.
  */
-exports.convertCountry = (country) => country ? country.length > 3 ? countryToCode(country) : codeToCountry(country.toUpperCase()) : country;
+function convertCountry(country) {
+    return country ? country.length > 3 ? countryToCode(country) : codeToCountry(country.toUpperCase()) : country;
+}
+exports.convertCountry = convertCountry;
 /**
 * Convert country ISO code to country full name.
 * @param country ISO code of country.
 * @returns Full name of country.
 */
-const codeToCountry = (code) => code.length == 2 ? object_1.objKeyFromVal(exports.COUNTRY_CODES_2, code) : object_1.objKeyFromVal(exports.COUNTRY_CODES_2, object_1.objKeyFromVal(exports.COUNTRY_CODES_3, code));
+function codeToCountry(code) {
+    return code.length == 2 ? object_1.objKeyFromVal(exports.COUNTRY_CODES_2, code) : object_1.objKeyFromVal(exports.COUNTRY_CODES_2, object_1.objKeyFromVal(exports.COUNTRY_CODES_3, code));
+}
+exports.codeToCountry = codeToCountry;
 /**
  * Convert country full name to its *ISO 3166-1 alpha* code.
  * @param country Full name of country.
  * @param iso ISO format of code to return (two- or three-letter).
  * @returns ISO code of country.
  */
-const countryToCode = (country, iso = 2) => iso === 2 ? exports.COUNTRY_CODES_2[country] : exports.COUNTRY_CODES_3[exports.COUNTRY_CODES_2[country]];
+function countryToCode(country, iso = 2) {
+    return iso === 2 ? exports.COUNTRY_CODES_2[country] : exports.COUNTRY_CODES_3[exports.COUNTRY_CODES_2[country]];
+}
+exports.countryToCode = countryToCode;
 //# sourceMappingURL=countries.js.map

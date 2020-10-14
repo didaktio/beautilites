@@ -66,11 +66,12 @@ const isEuro = (code) => {
  * @param code ISO 4217 code of the currency.
  * @returns Currency symbol.
  */
-exports.getCurrencySymbol = (code) => {
+function getCurrencySymbol(code) {
     if (code.length !== 2)
         throw Error('Code must be 2 Letter Country Code (alpha-2)');
     return isEuro(code) ? exports.CURRENCIES['EU'].symbolNative : exports.CURRENCIES[code].symbolNative;
-};
+}
+exports.getCurrencySymbol = getCurrencySymbol;
 /**
  * Get useful information about a currency by its code.
  * @param code ISO 4217 code of the currency.
@@ -83,9 +84,10 @@ exports.getCurrencySymbol = (code) => {
  * * `code` The ISO 4217 code of the currency.
  * * `namePlural` Regular plural name (more here: https://english.stackexchange.com/questions/147689/is-there-a-list-of-plural-names-of-currencies).
  */
-exports.getCurrency = (code) => {
+function getCurrency(code) {
     if (code.length !== 2)
         throw Error('Code must be 2 Letter Country Code (alpha-2)');
     return isEuro(code) ? exports.CURRENCIES['EU'] : exports.CURRENCIES[code];
-};
+}
+exports.getCurrency = getCurrency;
 //# sourceMappingURL=currencies.js.map

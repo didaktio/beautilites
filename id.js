@@ -9,7 +9,7 @@ const dec2hex = (dec) => ('0' + dec.toString(16)).substr(-2);
  * @param useCrypto Boolean indicating whether to use the *crypto* library if it is available.
  * @returns New ID [string].
  */
-exports.genId = (prefix, chars = 10, useCrypto = true) => {
+function genId(prefix, chars = 10, useCrypto = true) {
     if (!useCrypto)
         return `${prefix || ''}${[...Array(chars)].map(() => Math.random().toString(36)[2]).join('')}`;
     let id = '';
@@ -26,12 +26,16 @@ exports.genId = (prefix, chars = 10, useCrypto = true) => {
     else
         throw Error(`The 'crypto' module is not available. Either run in an environment with crypto available, or set useCrypto=false.`);
     return id;
-};
+}
+exports.genId = genId;
 /**
  * Generate a random string of numbers. Under the hood: A random number is multiplied by a quadrillion, then trimmed to 10
  * characters or otherwise.
  * @param chars Character length of string to generate. Defaults to 10.
  * @returns Random string [string].
  */
-exports.genRandomNumberString = (chars = 10) => `${Math.floor(Math.random() * 100000000000000)}`.substring(0, chars);
+function genRandomNumberString(chars = 10) {
+    return `${Math.floor(Math.random() * 100000000000000)}`.substring(0, chars);
+}
+exports.genRandomNumberString = genRandomNumberString;
 //# sourceMappingURL=id.js.map

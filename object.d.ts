@@ -16,14 +16,14 @@ interface RemoveOptions {
  * 'undefined:remove' will remove them.
  * @returns Object without property.
  */
-export declare const objRemoveFalsyProps: (obj: any, options?: RemoveOptions) => any;
+export declare function objRemoveFalsyProps(obj: any, options?: RemoveOptions): any;
 /**
  * Check whether two objects are identical.
  * @param obj1 Object one of comparison.
  * @param obj2 Object two of comparison.
  * @returns Boolean.
  */
-export declare const objIsEqual: (obj1: any, obj2: any) => boolean;
+export declare function objIsEqual(obj1: any, obj2: any): boolean;
 /**
  * Omit specific prop(s) from an object.
  * @param obj Object containing unwanted prop(s).
@@ -38,22 +38,22 @@ export declare function objOmitProp<T, K extends keyof T>(obj: T, ...keys: K[]):
  * @param obj Object with non-snake case keys.
  * @returns New object with changed keys.
  */
-export declare const objCamelifyKeys: (obj: any) => any;
+export declare function objCamelifyKeys(obj: any): any;
 /**
  * Change all object keys to snake casing (underscore, e.g., created_at).
  * @param obj Object with non-snake case keys.
  * @returns New object with changed keys.
  */
-export declare const objSnakeifyKeys: (obj: any) => any;
+export declare function objSnakeifyKeys(obj: any): any;
 /**
  * Get the key of a property using its value.
  * @param object Object including value.
  * @param value Value of property for which you want the key.
  * @returns [string] Property key.
  */
-export declare const objKeyFromVal: (object: {
+export declare function objKeyFromVal(object: {
     [key: string]: any;
-}, value: any) => string | undefined;
+}, value: any): string | undefined;
 /**
  * Completely flattens an object, regardless of nest depth. NOTE: Be mindful of properties with identical keys at different levels of the nest;
  * to omit properties from the operation, include them in the exceptions.
@@ -61,11 +61,11 @@ export declare const objKeyFromVal: (object: {
  * @param extras Exceptions: string of keys to omit from flatten operations.
  * @returns Flattened object.
  */
-export declare const objFlatten: (obj: {
+export declare function objFlatten(obj: {
     [key: string]: any;
 }, extras?: {
     exceptions: string[];
-}) => {
+}): {
     [key: string]: any;
 };
 /**
@@ -74,11 +74,11 @@ export declare const objFlatten: (obj: {
  * @param obj Deeply nested object.
  * @returns Array of keys.
  */
-export declare const objDeepExtractKeys: (obj: {
+export declare function objDeepExtractKeys(obj: {
     [key: string]: any;
 }, options?: {
     includeParents: boolean;
-}) => string[];
+}): string[];
 /**
  * Merge objects (including arrays). Duplicate strings will be removed from arrays; if this is *not* the intended behaviour,
  * use an ordinary spread operator merge (e.g., `{ ...obj1, ...obj2, prop1 }`).

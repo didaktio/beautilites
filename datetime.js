@@ -8,13 +8,19 @@ const date_fns_1 = require("date-fns");
  * @param date JS Date Object or ISO.
  * @returns JS Date Object.
  */
-exports.parseDate = (date) => date instanceof Date ? date : new Date(date);
+function parseDate(date) {
+    return date instanceof Date ? date : new Date(date);
+}
+exports.parseDate = parseDate;
 /**
  * Extract and format the time of a date into am/pm format.
  * @param date JS Date Object or ISO.
  * @returns Formatted date(time) string.
  */
-exports.formatTime = (date) => date_fns_1.format(exports.parseDate(date), 'h:mma');
+function formatTime(date) {
+    return date_fns_1.format(parseDate(date), 'h:mma');
+}
+exports.formatTime = formatTime;
 /**
  * Format a date into a human-readable string.
  * @param date JS Date Object or ISO.
@@ -28,7 +34,7 @@ exports.formatTime = (date) => date_fns_1.format(exports.parseDate(date), 'h:mma
  * * `withTime` Boolean indicating whether to include the time in am/pm format, e.g., *Thu, 3rd Jan 2019 at 2:00PM*.
  * @returns Formatted date string.
  */
-exports.formatDate = (date, into, extras = { withTime: false }) => {
+function formatDate(date, into, extras = { withTime: false }) {
     if (into === 'name-md' || into === 'numeric-slash')
         extras.timeSeparator = ', ';
     let formatted = `${into === 'name-full' ? 'EEEE, do MMM yyyy' :
@@ -39,8 +45,9 @@ exports.formatDate = (date, into, extras = { withTime: false }) => {
                         'EEEE, do MMM yyyy'}${extras.withTime ? `'${extras.timeSeparator || ' at '}'h:mma` : ''}`;
     if (extras.noComma)
         formatted = formatted.replace(',', '');
-    return date_fns_1.format(exports.parseDate(date), formatted);
-};
+    return date_fns_1.format(parseDate(date), formatted);
+}
+exports.formatDate = formatDate;
 function toHHMMSS(seconds, { map } = { map: false }) {
     let hrs = Math.floor(seconds / 3600), mins = Math.floor((seconds - (hrs * 3600)) / 60), secs = Math.floor(seconds - (hrs * 3600) - (mins * 60));
     if (map)
@@ -64,7 +71,7 @@ exports.toHHMMSS = toHHMMSS;
  * * `withSeconds` Boolean indicating whether to include seconds in the returned string.
  * @returns Formatted duration string.
  */
-exports.formatDuration = (duration, extras = { withSeconds: false }) => {
+function formatDuration(duration, extras = { withSeconds: false }) {
     let hrs, mins, secs;
     if (typeof duration === 'number')
         ({ hrs, mins, secs } = toHHMMSS(duration, { map: true }));
@@ -82,8 +89,9 @@ exports.formatDuration = (duration, extras = { withSeconds: false }) => {
         str = str.concat(hrs < 10 ? `${hrs}hr ` : `${hrs}hrs `);
     if (mins)
         str = str.concat(mins < 10 ? `${mins}min ` : `${mins}mins `);
-    if ((extras?.withSeconds || !str) && !!secs)
+    if (((extras === null || extras === void 0 ? void 0 : extras.withSeconds) || !str) && !!secs)
         str = str.concat(secs < 10 ? `${secs}s ` : `${secs}s`);
     return str;
-};
+}
+exports.formatDuration = formatDuration;
 //# sourceMappingURL=datetime.js.map

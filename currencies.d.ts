@@ -35,7 +35,7 @@ export interface Currency {
  * @param code ISO 4217 code of the currency.
  * @returns Currency symbol.
  */
-export declare const getCurrencySymbol: (code: string) => string;
+export declare function getCurrencySymbol(code: string): string;
 /**
  * Get useful information about a currency by its code.
  * @param code ISO 4217 code of the currency.
@@ -48,4 +48,4 @@ export declare const getCurrencySymbol: (code: string) => string;
  * * `code` The ISO 4217 code of the currency.
  * * `namePlural` Regular plural name (more here: https://english.stackexchange.com/questions/147689/is-there-a-list-of-plural-names-of-currencies).
  */
-export declare const getCurrency: (code: string) => Currency;
+export declare function getCurrency(code: string): Currency;
