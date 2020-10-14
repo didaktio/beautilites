@@ -5,12 +5,14 @@
     "url": "https://jaipreston.com"
   },
   "name": "beautilites",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "Lightweight set of useful utilities for Javascript and Typescript.",
   "main": "index.js",
   "scripts": {
     "deploy": "tsc && npm publish",
-    "deploy:patch": "tsc && npm version patch -f && npm publish"
+    "deploy:patch": "tsc && npm version patch -f && npm publish",
+    "deploy:minor": "tsc && npm version minor -f && npm publish",
+    "deploy:major": "tsc && npm version major -f && npm publish"
   },
   "dependencies": {
     "date-fns": "^2.16.1"
