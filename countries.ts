@@ -759,16 +759,18 @@ export type CountryName = typeof COUNTRIES[number];
  * @param country Two- or three-letter code, or full name of country.
  * @returns Either full name or code of country.
  */
-export const convertCountry = (country: string) =>
-    country ? country.length > 3 ? countryToCode(country as CountryName) : codeToCountry(country.toUpperCase()) : country;
+export function convertCountry(country: string) {
+    return country ? country.length > 3 ? countryToCode(country as CountryName) : codeToCountry(country.toUpperCase()) : country;
+}
 
 /**
 * Convert country ISO code to country full name.
 * @param country ISO code of country.
 * @returns Full name of country.
 */
-const codeToCountry = (code: string) =>
-    code.length == 2 ? objKeyFromVal(COUNTRY_CODES_2, code) : objKeyFromVal(COUNTRY_CODES_2, objKeyFromVal(COUNTRY_CODES_3, code));
+export function codeToCountry(code: string) {
+    return code.length == 2 ? objKeyFromVal(COUNTRY_CODES_2, code) : objKeyFromVal(COUNTRY_CODES_2, objKeyFromVal(COUNTRY_CODES_3, code));
+}
 
 /**
  * Convert country full name to its *ISO 3166-1 alpha* code.
@@ -776,6 +778,7 @@ const codeToCountry = (code: string) =>
  * @param iso ISO format of code to return (two- or three-letter).
  * @returns ISO code of country.
  */
-const countryToCode = (country: CountryName, iso: 2 | 3 = 2) =>
-iso === 2 ? COUNTRY_CODES_2[country] : COUNTRY_CODES_3[COUNTRY_CODES_2[country]];
+export function countryToCode(country: CountryName, iso: 2 | 3 = 2) {
+    return iso === 2 ? COUNTRY_CODES_2[country] : COUNTRY_CODES_3[COUNTRY_CODES_2[country]];
+}
 

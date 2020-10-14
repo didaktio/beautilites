@@ -6,14 +6,18 @@ import { format } from 'date-fns';
  * @param date JS Date Object or ISO.
  * @returns JS Date Object.
  */
-export const parseDate = (date: Date | string) => date instanceof Date ? date : new Date(date);
+export function parseDate (date: Date | string) {
+    return  date instanceof Date ? date : new Date(date);
+}
 
 /**
  * Extract and format the time of a date into am/pm format.
  * @param date JS Date Object or ISO.
  * @returns Formatted date(time) string.
  */
-export const formatTime = (date: Date | string) => format(parseDate(date), 'h:mma');
+export function formatTime (date: Date | string) {
+    return format(parseDate(date), 'h:mma');
+}
 
 export type DateFormats = 'name-short' | 'name-full' | 'name-md' | 'numeric-slash' | 'numeric-dot';
 export interface FormateDateExtras { withTime: boolean; noComma?: boolean, timeSeparator?: string }
@@ -30,7 +34,7 @@ export interface FormateDateExtras { withTime: boolean; noComma?: boolean, timeS
  * * `withTime` Boolean indicating whether to include the time in am/pm format, e.g., *Thu, 3rd Jan 2019 at 2:00PM*.
  * @returns Formatted date string.
  */
-export const formatDate = (date: Date | string, into: DateFormats, extras: FormateDateExtras = { withTime: false }) => {
+export function formatDate (date: Date | string, into: DateFormats, extras: FormateDateExtras = { withTime: false }) {
     if (into === 'name-md' || into === 'numeric-slash') extras.timeSeparator = ', '
     let formatted = `${
         into === 'name-full' ? 'EEEE, do MMM yyyy' :
@@ -75,7 +79,7 @@ export function toHHMMSS(seconds: number, { map } = { map: false }) {
  * * `withSeconds` Boolean indicating whether to include seconds in the returned string.
  * @returns Formatted duration string.
  */
-export const formatDuration = (duration: string | number, extras = { withSeconds: false }) => {
+export function formatDuration (duration: string | number, extras = { withSeconds: false }) {
     let hrs: number, mins: number, secs: number;
     if (typeof duration === 'number') ({ hrs, mins, secs } = toHHMMSS(duration, { map: true }));
     else {

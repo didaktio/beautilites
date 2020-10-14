@@ -1,7 +1,6 @@
 import { arraysEqual } from "./array";
 import { strCamelToSnake, strSnakeToCamel } from "./string";
 
-
 interface RemoveOptions {
     'undefined:remove'?: boolean;
     'undefined:null'?: boolean;
@@ -20,8 +19,8 @@ interface RemoveOptions {
  * 'undefined:remove' will remove them.
  * @returns Object without property.
  */
-export const objRemoveFalsyProps = (obj: any,
-    options: RemoveOptions = { null: true, 'undefined:remove': true, 'undefined:null': false, emptyString: true }) => {
+export function objRemoveFalsyProps(obj: any,
+    options: RemoveOptions = { null: true, 'undefined:remove': true, 'undefined:null': false, emptyString: true }) {
     for (const k of Object.keys(obj)) {
         if (options.null && obj[k] === null
             || options.emptyString && obj[k] === ''
@@ -43,7 +42,7 @@ export const objRemoveFalsyProps = (obj: any,
  * @param obj2 Object two of comparison.
  * @returns Boolean.
  */
-export const objIsEqual = (obj1, obj2) => {
+export function objIsEqual(obj1, obj2) {
     if (obj1 === obj2) return true;
     // if both x and y are null or undefined and exactly the same
 
@@ -94,14 +93,18 @@ export function objOmitProp<T, K extends keyof T>(obj: T, ...keys: K[]) {
  * @param obj Object with non-snake case keys.
  * @returns New object with changed keys.
  */
-export const objCamelifyKeys = (obj: any) => Object.keys(obj).reduce((acc, curr) => ({ ...acc, [strSnakeToCamel(curr)]: obj[curr] }), {} as any);
+export function objCamelifyKeys(obj: any) {
+    return Object.keys(obj).reduce((acc, curr) => ({ ...acc, [strSnakeToCamel(curr)]: obj[curr] }), {} as any);
+}
 
 /**
  * Change all object keys to snake casing (underscore, e.g., created_at).
  * @param obj Object with non-snake case keys.
  * @returns New object with changed keys.
  */
-export const objSnakeifyKeys = (obj: any) => Object.keys(obj).reduce((acc, curr) => ({ ...acc, [strCamelToSnake(curr)]: obj[curr] }), {} as any);
+export function objSnakeifyKeys(obj: any) {
+    return Object.keys(obj).reduce((acc, curr) => ({ ...acc, [strCamelToSnake(curr)]: obj[curr] }), {} as any);
+}
 
 /**
  * Get the key of a property using its value.
@@ -109,7 +112,9 @@ export const objSnakeifyKeys = (obj: any) => Object.keys(obj).reduce((acc, curr)
  * @param value Value of property for which you want the key.
  * @returns [string] Property key.
  */
-export const objKeyFromVal = (object: { [key: string]: any }, value: any) => Object.keys(object).find(key => object[key] === value);
+export function objKeyFromVal(object: { [key: string]: any }, value: any) {
+    return Object.keys(object).find(key => object[key] === value);
+}
 
 /**
  * Completely flattens an object, regardless of nest depth. NOTE: Be mindful of properties with identical keys at different levels of the nest;
@@ -118,13 +123,15 @@ export const objKeyFromVal = (object: { [key: string]: any }, value: any) => Obj
  * @param extras Exceptions: string of keys to omit from flatten operations.
  * @returns Flattened object.
  */
-export const objFlatten = (obj: { [key: string]: any }, extras = { exceptions: [''] }): { [key: string]: any } => Object.assign(
-    {},
-    ...function flatten(o): any {
-        return [].concat(...Object.keys(o)
-            .map(k => (typeof o[k] === 'object' && o[k] !== null && !Array.isArray(o[k]) && !extras.exceptions.includes(k)) ? flatten(o[k]) : ({ [k]: o[k] })));
-    }(obj)
-);
+export function objFlatten(obj: { [key: string]: any }, extras = { exceptions: [''] }): { [key: string]: any } {
+    return Object.assign(
+        {},
+        ...function flatten(o): any {
+            return [].concat(...Object.keys(o)
+                .map(k => (typeof o[k] === 'object' && o[k] !== null && !Array.isArray(o[k]) && !extras.exceptions.includes(k)) ? flatten(o[k]) : ({ [k]: o[k] })));
+        }(obj)
+    );
+}
 
 /**
  * Extract all keys from object and return them as an array. Parent keys of nested property are included unless includeParents=false
@@ -132,8 +139,9 @@ export const objFlatten = (obj: { [key: string]: any }, extras = { exceptions: [
  * @param obj Deeply nested object.
  * @returns Array of keys.
  */
-export const objDeepExtractKeys = (obj: { [key: string]: any }, options = { includeParents: true }) =>
-    options.includeParents ? [...Object.keys(obj), ...Object.keys(objFlatten(obj))] : Object.keys(objFlatten(obj));
+export function objDeepExtractKeys(obj: { [key: string]: any }, options = { includeParents: true }) {
+    return options.includeParents ? [...Object.keys(obj), ...Object.keys(objFlatten(obj))] : Object.keys(objFlatten(obj));
+}
 
 /**
  * Merge objects (including arrays). Duplicate strings will be removed from arrays; if this is *not* the intended behaviour,

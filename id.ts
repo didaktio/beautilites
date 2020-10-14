@@ -7,7 +7,7 @@ const dec2hex = (dec: any) => ('0' + dec.toString(16)).substr(-2);
  * @param useCrypto Boolean indicating whether to use the *crypto* library if it is available.
  * @returns New ID [string].
  */
-export const genId = (prefix?: string, chars: 6 | 10 | 20 | 30 = 10, useCrypto = true) => {
+export function genId (prefix?: string, chars: 6 | 10 | 20 | 30 = 10, useCrypto = true) {
     if (!useCrypto) return `${prefix || ''}${[...Array(chars)].map(() => Math.random().toString(36)[2]).join('')}`;
 
     let id = '';
@@ -32,4 +32,6 @@ export const genId = (prefix?: string, chars: 6 | 10 | 20 | 30 = 10, useCrypto =
  * @param chars Character length of string to generate. Defaults to 10.
  * @returns Random string [string].
  */
-export const genRandomNumberString = (chars: 5 | 10 | 15 = 10) => `${Math.floor(Math.random() * 100000000000000)}`.substring(0, chars);
+export function genRandomNumberString (chars: 5 | 10 | 15 = 10) {
+    return `${Math.floor(Math.random() * 100000000000000)}`.substring(0, chars);
+}
