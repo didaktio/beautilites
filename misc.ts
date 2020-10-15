@@ -57,4 +57,16 @@ export function wait (seconds: number) {
     return new Promise((r, j) => setTimeout(r, seconds * 1000));
 }
 
+/**
+ * Convert a time unit and amount to seconds.
+ * @param unit `minute`, `hour`, or `day`.
+ * @param amount Amount of provided unit.
+ * @returns Number of seconds [number].
+ */
+export function calculateSeconds(unit: 'minute' | 'hour' | 'day', amount: number) {
+    if (unit === 'minute') return amount * 60;
+    else if (unit === 'hour') return (amount * 60) * 60;
+    else if (unit === 'day') return ((amount * 24) * 60) * 60;
+    else return amount;
+}
 
