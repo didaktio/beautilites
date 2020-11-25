@@ -5,7 +5,7 @@
     "url": "https://jaipreston.com"
   },
   "name": "beautilities",
-  "version": "1.2.9",
+  "version": "1.2.0",
   "description": "Lightweight set of useful utilities for Javascript and Typescript.",
   "main": "index.js",
   "scripts": {
