@@ -8,6 +8,16 @@
     "declaration": true,
     "noEmitOnError": true,
     "noImplicitAny": false,
-    "downlevelIteration": true
-  }
+    "downlevelIteration": true,
+    "lib": [
+      "DOM",
+      "ESNext"
+    ]
+  },
+  "include": [
+    "./*.ts"
+  ],
+  "exclude": [
+    "test/test.ts"
+  ]
 }

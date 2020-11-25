@@ -5,20 +5,19 @@
     "url": "https://jaipreston.com"
   },
   "name": "beautilities",
-  "version": "1.1.2",
+  "version": "1.2.9",
   "description": "Lightweight set of useful utilities for Javascript and Typescript.",
   "main": "index.js",
   "scripts": {
+    "build": "tsc && npm pack",
     "deploy": "tsc && npm publish",
     "deploy:patch": "tsc && npm version patch -f && npm publish",
     "deploy:minor": "tsc && npm version minor -f && npm publish",
     "deploy:major": "tsc && npm version major -f && npm publish"
   },
-  "dependencies": {
-    "date-fns": "^2.16.1"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@types/node": "^14.11.8"
+    "@types/node": "^14.14.10"
   },
   "repository": {
     "directory": "git",
@@ -48,5 +47,9 @@
     "js utils",
     "putils"
   ],
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/didaktio/beautilities/issues"
+  },
+  "homepage": "https://github.com/didaktio/beautilities#readme"
 }

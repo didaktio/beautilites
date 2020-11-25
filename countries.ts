@@ -1,10 +1,9 @@
-import { objKeyFromVal } from "./object";
-
+import { objKeyFromVal } from './objects';
 
 /**
- * List of countries, by full name. This is likely all you will ever need but if there are
- * omissions and/or new countries formed for which I know nothing about, feel free to use a pull
- * request.
+ * List of countries, by full name. This is likely all you'll ever need but if there are
+ * omissions and/or new countries formed for which I know nothing about, feel free submit a pull
+ * request / create an issue.
  */
 export const COUNTRIES = [
     "United Kingdom",
@@ -15,8 +14,11 @@ export const COUNTRIES = [
     "Ireland",
 
     "Afghanistan",
+    "Aland Islands",
+    "Antarctica",
     "Albania",
     "Algeria",
+    "American Samoa",
     "Andorra",
     "Angola",
     "Anguilla",
@@ -40,6 +42,7 @@ export const COUNTRIES = [
     "Bolivia",
     "Bosnia & Herzegovina",
     "Botswana",
+    "Bouvet Island",
     "Brazil",
     "Bulgaria",
     "Burkina Faso",
@@ -220,13 +223,22 @@ export const COUNTRIES = [
 ] as const;
 
 /**
- * Map of countries wherein the keys are country names and the values are their corresponding ISO two-letter codes (**ISO 3166-1 alpha-2**).
+ * Map of countries wherein the keys are country names and the values their corresponding ISO two-letter codes
+ * [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
  *
- * Access the code of country via bracket notation, e.g., `const myCountry = COUNTRY_CODES["United Kingdom"];`.
- *
- * The country name can also be accessed from by code using the `objKeyFromVal` method.
+ * @example
+ * ```
+ * const myCountryCode = COUNTRY_CODES['United Kingdom']; // GB
+ * ```
+ * Country name can also be accessed by its code using the `objKeyFromVal` method.
+ * @example
+ * ```
+ * import { objKeyFromVal } from 'beautilities';
+ * ...
+ * const myCountryName = objKeyFromVal(COUNTRY_CODES_IA2, 'GB');
+ * ```
  */
-export const COUNTRY_CODES_2 = {
+export const COUNTRY_CODES_IA2 = {
     "United Kingdom": "GB",
     "United States": "US",
     "Spain": "ES",
@@ -357,11 +369,13 @@ export const COUNTRY_CODES_2 = {
     "Lebanon": "LB",
     "Lesotho": "LS",
     "Liberia": "LR",
+    "Libya": "LY",
     "Libyan Arab Jamahiriya": "LY",
     "Liechtenstein": "LI",
     "Lithuania": "LT",
     "Luxembourg": "LU",
     "Macao": "MO",
+    "Macau": "MO",
     "Macedonia": "MK",
     "Madagascar": "MG",
     "Malawi": "MW",
@@ -423,6 +437,7 @@ export const COUNTRY_CODES_2 = {
     "St Martin": "MF",
     "St Pierre & Miquelon": "PM",
     "St Vincent": "VC",
+    "Saint Pierre & Miquelon": "PM",
     "Samoa": "WS",
     "San Marino": "SM",
     "Sao Tome & Principe": "ST",
@@ -445,6 +460,7 @@ export const COUNTRY_CODES_2 = {
     "Swaziland": "SZ",
     "Sweden": "SE",
     "Switzerland": "CH",
+    "Syria": "SY",
     "Syrian Arab Republic": "SY",
     "Taiwan": "TW",
     "Tajikistan": "TJ",
@@ -476,22 +492,26 @@ export const COUNTRY_CODES_2 = {
     "Yemen": "YE",
     "Zambia": "ZM",
     "Zimbabwe": "ZW",
-
-    "Libya": "LY",
-    "Macau": "MO",
-    "Saint Pierre & Miquelon": "PM",
-    "Syria": "SY",
-
-} as CountryCodes;
+} as const;
 
 /**
- * Map of country codes wherein the keys are two-letter (*ISO 3166-1 alpha-2*) country codes and the values are their corresponding three-letter codes (**ISO 3166-1 alpha-3**).
+ * Map of country codes wherein the keys are two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+ * country codes and the values their corresponding three-letter codes
+ * [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3).
  *
- * Access the code of country via bracket notation, e.g., `const myCountryISO3 = COUNTRY_CODES_2_3["US];`.
- *
- * Two-letter codes can be accessed by their three-letter code using the `objKeyFromVal` method.
+ * Access the code of country with bracket notation:
+ * @example
+ * ```
+ * const myCountryCodeIso3 = COUNTRY_CODES_IA3['US'];
+ * ```
+ * @example
+ * ```
+ * import { objKeyFromVal } from 'beautilities';
+ * ...
+ * const myCountryCodeIso2 = objKeyFromVal(COUNTRY_CODES_IA3, 'GBR');
+ * ```
  */
-export const COUNTRY_CODES_3 = {
+export const COUNTRY_CODES_IA3 = {
     "AF": "AFG",
     "AX": "ALA",
     "AL": "ALB",
@@ -741,44 +761,47 @@ export const COUNTRY_CODES_3 = {
     "YE": "YEM",
     "ZM": "ZMB",
     "ZW": "ZWE"
-}
-
-
-/**
- * Country two- or three-letter ISO code.
- */
-export type CountryCodes = { [key in CountryName]: string }
+} as const;
 
 /**
  * Country full name.
  */
-export type CountryName = typeof COUNTRIES[number];
+export type Country = typeof COUNTRIES[number];
 
 /**
- * Convert a country ISO code to a full country name, or vice versa.
- * @param country Two- or three-letter code, or full name of country.
- * @returns Either full name or code of country.
+ * Country two-letter code ([ISO 3166-1 Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)).
  */
-export function convertCountry(country: string) {
-    return country ? country.length > 3 ? countryToCode(country as CountryName) : codeToCountry(country.toUpperCase()) : country;
-}
+export type CountryIA2 = typeof COUNTRY_CODES_IA2[keyof typeof COUNTRY_CODES_IA2];
 
 /**
-* Convert country ISO code to country full name.
-* @param country ISO code of country.
-* @returns Full name of country.
+ * Country three-letter code ([ISO 3166-1 Alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)).
+ */
+export type CountryIA3 = typeof COUNTRY_CODES_IA3[keyof typeof COUNTRY_CODES_IA3];
+
+/**
+* Convert country [ISO code](https://www.iso.org/iso-3166-country-codes.html) to its full name.
+* @param country ISO code of country
+* @returns Full name of country
 */
 export function codeToCountry(code: string) {
-    return code.length == 2 ? objKeyFromVal(COUNTRY_CODES_2, code) : objKeyFromVal(COUNTRY_CODES_2, objKeyFromVal(COUNTRY_CODES_3, code));
+    return code.length == 2 ? objKeyFromVal(COUNTRY_CODES_IA2, code) : objKeyFromVal(COUNTRY_CODES_IA2, objKeyFromVal(COUNTRY_CODES_IA3, code));
 }
 
 /**
- * Convert country full name to its *ISO 3166-1 alpha* code.
- * @param country Full name of country.
- * @param iso ISO format of code to return (two- or three-letter).
- * @returns ISO code of country.
+ * Convert country full name to its [ISO code](https://www.iso.org/iso-3166-country-codes.html).
+ * @param country Full name of country
+ * @param iso ISO format of code to return (two-letter or three-letter)
+ * @returns ISO code of country
  */
-export function countryToCode(country: CountryName, iso: 2 | 3 = 2) {
-    return iso === 2 ? COUNTRY_CODES_2[country] : COUNTRY_CODES_3[COUNTRY_CODES_2[country]];
+export function countryToCode(country: Country, iso: 2 | 3 = 2) {
+    return iso === 2 ? COUNTRY_CODES_IA2[country] : COUNTRY_CODES_IA3[COUNTRY_CODES_IA2[country]];
 }
 
+/**
+ * Convert country [ISO code](https://www.iso.org/iso-3166-country-codes.html) to it's full name name, or vice versa.
+ * @param country [Two](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)- or [three](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3)-letter code, or full name of country.
+ * @returns Full name or code of country
+ */
+export function convertCountry(country: string) {
+    return country ? country.length > 3 ? countryToCode(country as Country) : codeToCountry(country.toUpperCase()) : country;
+}
