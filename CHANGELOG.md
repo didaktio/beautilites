@@ -24,42 +24,42 @@
 * (global) `exceptions` **parameter** renamed to `exclusions`.
 
 #### New
-`valsAreEqual` Check if two values are equal, with options for excluding properties, setting traverse behaviour, and configuring how arrays and functions are compared.
-`funcsAreEqual` Check if two functions are equal, with options for configuring comparison strictness.
-`objHasKey` Search an object for a specific (property) key.
-`objHasVal` Search an object for a specific (property) value.
-`arrsMerge` Merge two or more arrays.
-`arrFlatten` Flatten a single array containing arrays and so on, with options for removing duplicates.
-`isArray` Check if x is an array.
-`isObject` Check if x is an object.
-`dateParse` Alias for `parseDate`.
-`datesAreEqual` Check if two dates are equal.
-`timeFormat` Alias for `formatTime`.
-`generateId` Alias for `genId`.
-`CountryIA2` Type for country two-letter ISO code
-`CountryIA3` Type for country three-letter ISO code
+`valsAreEqual` Check if two values are equal, with options for excluding properties, setting traverse behaviour, and configuring how arrays and functions are compared.\
+`funcsAreEqual` Check if two functions are equal, with options for configuring comparison strictness.\
+`objHasKey` Search an object for a specific (property) key.\
+`objHasVal` Search an object for a specific (property) value.\
+`arrsMerge` Merge two or more arrays.\
+`arrFlatten` Flatten a single array containing arrays and so on, with options for removing duplicates.\
+`isArray` Check if x is an array.\
+`isObject` Check if x is an object.\
+`dateParse` Alias for `parseDate`.\
+`datesAreEqual` Check if two dates are equal.\
+`timeFormat` Alias for `formatTime`.\
+`generateId` Alias for `genId`.\
+`CountryIA2` Type for country two-letter ISO code.\
+`CountryIA3` Type for country three-letter ISO code.
 
 
 #### Improvements
-`arrsAreEqual` (formerly `arraysEqual`) Options for comparison strategies and configuring traverse behaviour.
-`objsAreEqual` (formerly `objIsEqual`) Options for allowing exceptions, configuring traverse behaviour, and changing how arrays and functions are compared.
-`objToQueryString` (formerly `paramOptionsToString`) Support for arrays and nested objects, and options for configuration.
-`objRemoveProps` Option to check nested objects for props to remove.
+`arrsAreEqual` (formerly `arraysEqual`) Options for comparison strategies and configuring traverse behaviour.\
+`objsAreEqual` (formerly `objIsEqual`) Options for allowing exceptions, configuring traverse behaviour, and changing how arrays and functions are compared.\
+`objToQueryString` (formerly `paramOptionsToString`) Support for arrays and nested objects, and options for configuration.\
+`objRemoveProps` Option to check nested objects for props to remove.\
 objFlatten now has options
-`objCamelifyKeys` Convert nested objects by default.
-`objSnakeifyKeys` Convert nested objects by default.
-`objKeyFromVal` Option for checking nested objects.
+`objCamelifyKeys` Convert nested objects by default.\
+`objSnakeifyKeys` Convert nested objects by default.\
+`objKeyFromVal` Option for checking nested objects.\
 `objExtractKeys` Options for including nested objects, returning
-a flat list, and removing duplicates.
-`strCapitalise` Option for capitalising all words.
-All date functions now accept JS timestamps (or [milliseconds since UNIX expoch]((https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now))) in addition to Date objects and ISO stings.
+a flat list, and removing duplicates.\
+`strCapitalise` Option for capitalising all words.\
+All date functions now accept JS timestamps (or [milliseconds since UNIX expoch]((https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now))) in addition to Date objects and ISO stings.\
 Countries: Support for Aland Islands, Antarctica, American Samoa, Bouvet Island, Libya, Macau, Saint Pierre & Miquelon, and Syria.
-`generateId` Options for configuring if/how to use crypto.
-`secsToMins` Accept strings.
-`wait` Accept strings.
-`calculateSeconds` Accept strings.
-Date functions prefixed with `date`, eg `dateFormat`.
-Time functions prefixed with `time`.
+`generateId` Options for configuring if/how to use crypto.\
+`secsToMins` Accept strings.\
+`wait` Accept strings.\
+`calculateSeconds` Accept strings.\
+Date functions prefixed with `date`, eg `dateFormat`.\
+Time functions prefixed with `time`.\
 Beautilities no longer depends on (the amazing) [date-fns](https://date-fns.org/)
 
 ...and lots of improvements to descriptions, typo fixes, and internal refactoring.

@@ -48,26 +48,26 @@ Everything is commented and strong-typed. Very handy is the naming convention of
 - Prefixes for functions ~specific to data of type **x**. For example, all string manipulation functions begin with `str`, all arrays with `arr`, and all object functions with `obj`. Your code editor's intellisense will present a popup as soon as you type the prefix and you'll be able to quickly select the required function.
 
 ### Popular Functions
-`formatDate` Beautify a date object or timestamp.
-`formatTime` Convert a date into human-readable time.
-`parseDate` Convert a timestamp or ISO to a JS date object.
-`objMerge` Deeply merge objects, including arrays.
-`valsAreEqual` Check if two values are equal, with support for all data types.
-`strSnakeToCamel` Convert snake_case string to camelCase.
-`strCapitalise` Capitalise the first letter of a string.
-`countryToCode` Convert a country full name to its ISO two- or three-letter code.
-`isObject` Check if value is a key-value object.
-`objSnakeifyKeys` Convert all keys in an object to snakeCasing.
-`objsAreEqual` Check if two objects are equal.
-`objToQueryString` Convert an object of parameters to a query string.
-`objOmitProps` Omit specific properties from an object by key names.
-`objKeyFromVal` Get a property's key name from it's value.
-`objFlatten` Completely flatten an object, regardless of nesting.
-`arrsAreEqual` Check if two or more arrays are equal.
-`arrsMerge` Merge two or more arrays.
-`getCurrency` Get useful information about a currency such as the symbol, plural name, and decimal points.
-`generateId` Generate a strong ID. [Crypto](https://nodejs.org/api/crypto.html) will be used if available (e.g., in Node.js).
-`wait` A simple promise which resolves after a defined number of seconds.
+`formatDate` Beautify a date object or timestamp.\
+`formatTime` Convert a date into human-readable time.\
+`parseDate` Convert a timestamp or ISO to a JS date object.\
+`objMerge` Deeply merge objects, including arrays.\
+`valsAreEqual` Check if two values are equal, with support for all data types.\
+`strSnakeToCamel` Convert snake_case string to camelCase.\
+`strCapitalise` Capitalise the first letter of a string.\
+`countryToCode` Convert a country full name to its ISO two- or three-letter code.\
+`isObject` Check if value is a key-value object.\
+`objSnakeifyKeys` Convert all keys in an object to snakeCasing.\
+`objsAreEqual` Check if two objects are equal.\
+`objToQueryString` Convert an object of parameters to a query string.\
+`objOmitProps` Omit specific properties from an object by key names.\
+`objKeyFromVal` Get a property's key name from it's value.\
+`objFlatten` Completely flatten an object, regardless of nesting.\
+`arrsAreEqual` Check if two or more arrays are equal.\
+`arrsMerge` Merge two or more arrays.\
+`getCurrency` Get useful information about a currency such as the symbol, plural name, and decimal points.\
+`generateId` Generate a strong ID. [Crypto](https://nodejs.org/api/crypto.html) will be used if available (e.g., in Node.js).\
+`wait` A simple promise which resolves after a defined number of seconds.\
 `isDomainOrURL` Check whether a string is a domain or a URL.
 
 ### Real-world Usage
