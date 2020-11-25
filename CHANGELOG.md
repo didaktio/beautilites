@@ -45,7 +45,6 @@
 `objsAreEqual` (formerly `objIsEqual`) Options for allowing exceptions, configuring traverse behaviour, and changing how arrays and functions are compared.\
 `objToQueryString` (formerly `paramOptionsToString`) Support for arrays and nested objects, and options for configuration.\
 `objRemoveProps` Option to check nested objects for props to remove.\
-objFlatten now has options
 `objCamelifyKeys` Convert nested objects by default.\
 `objSnakeifyKeys` Convert nested objects by default.\
 `objKeyFromVal` Option for checking nested objects.\
