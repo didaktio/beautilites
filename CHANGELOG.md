@@ -3,7 +3,7 @@
 ##### BREAKING CHANGES
 * `objMerge` renamed to `objsMerge`.
 * `objArrDeepMerge` removed. Use `objsMerge` with defined options instead.
-* `objOmitProp` renamed to `objOmitProps`.
+* `objOmitProp` renamed to `objRemoveProps`.
 * `objIsEqual` renamed to `objsAreEqual`.
 * `objRemoveFalsyProps` Totally new structure for `options` parameter, and much greater flexibility.
 * `paramOptionsToString` renamed to `objToQueryString`.
