@@ -158,7 +158,6 @@ export function dateFormat(date: Date | string | number, into?: DateFormats, opt
         const [dy, mth, date, yr, ...[at, time, period]] = new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: options?.withTime ? 'short' : undefined } as any)
             .format(_date)
             .split(' ');
-            console.log(time);
         return `${dy.slice(0, 3)} ${mth.slice(0, 3)} ${appendDateSuffix(+date[0].replace(',', ''))} ${yr}${time ? ` ${at} ${time}${period}` : ''}`;
     }
     if (into === 'short'){
