@@ -1,3 +1,8 @@
+# 1.2.2 (28.11.2020)
+* Fixed error which caused `objToQueryString` to return an empty string.
+
+# 1.2.1 (27.11.2020)
+* Remove console.log statement from datetime.js.
 # 1.2.0 (26.11.2020)
 
 ##### BREAKING CHANGES

@@ -235,18 +235,17 @@ export function objsAreEqual<T extends { [key: string]: any; }, K extends keyof 
  * @param options.arraySeparator Character with which to separate elements in arrays. Defaults to `'|'`;
  * @returns Query string
  */
-export function objToQueryString(params: { [key: string]: any }, startWith = '', options?: { arraySeparator?: string; }) {
+export function objToQueryString(object: { [key: string]: any }, startWith = '', options?: { arraySeparator?: string; }) {
     let result = startWith;
-    for (const param in params)
-        if (Object.prototype.hasOwnProperty(param)) {
+    for (const param in object)
+        if (Object.prototype.hasOwnProperty.call(object, param)) {
             if (result && result !== startWith) result += '&';
-            const val = params[param];
+            const val = object[param];
             if (val) result += `${param}=${Array.isArray(val) ? val.join(options?.arraySeparator || '|') : (isObject(val)) ? objToQueryString(val) : val}`;
             else result += `${param}=`;
         }
     return result.length > 1 ? result : '';
 }
-
 /**
  * Safely check if an object has a specific property. This function protects against objects with a prototype of
  * `null` by utilising the `Object.hasOwnProperty.call` method.

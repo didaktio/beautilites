@@ -16,9 +16,7 @@
     "deploy:major": "tsc && npm version major -f && npm publish"
   },
   "dependencies": {},
-  "devDependencies": {
-    "@types/node": "^14.14.10"
-  },
+  "devDependencies": {},
   "repository": {
     "directory": "git",
     "url": "https://github.com/didaktio/beautilities"
@@ -26,9 +24,11 @@
   "files": [
     "*.d.ts",
     "*.js",
-    "README.md"
+    "README.md",
+    "CHANGELOG.md"
   ],
   "keywords": [
+    "beautilities",
     "javascript utilities",
     "utilities",
     "typescript",
@@ -39,13 +39,11 @@
     "country list",
     "currency list",
     "id",
-    "change casing javascript",
+    "change casing",
     "datetime",
-    "string utils",
-    "object utils",
-    "light utils library",
+    "light utilitiess library",
     "js utils",
-    "putils"
+    "data equality"
   ],
   "license": "UNLICENSED",
   "bugs": {
