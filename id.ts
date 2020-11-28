@@ -13,8 +13,10 @@ export function generateId(prefix = '', characters: 6 | 10 | 20 | 30 = 10, crypt
     let id = '';
 
     if (crypto !== 'disabled') {
+        // @ts-ignore
         if (typeof window === 'undefined' && process)
             try {
+                // @ts-ignore
                 id = require('crypto')?.randomBytes(characters / 2).toString('hex');
             } catch (e) {
 
