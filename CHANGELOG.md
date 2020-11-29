@@ -1,3 +1,7 @@
+
+# 1.2.3 (30.11.2020)
+* `objRemoveFalsyProps` may have deleted arrays when configured otherwise. This was a bug. It
+is no longer. It also now doesn't remove empty objects by default.
 # 1.2.2 (28.11.2020)
 * Fixed error which caused `objToQueryString` to return an empty string.
 

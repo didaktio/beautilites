@@ -37,33 +37,34 @@ interface ObjRemoveFalsyPropsOptions {
  * @todo Options for traversing arrays, using same options as the rules for deletion.
  */
 export function objRemoveFalsyProps(object: { [key: string]: any; }, options?: ObjRemoveFalsyPropsOptions) {
-    const keys = options?.exclusions?.length ? Object.keys(object).filter(k => !options.exclusions?.includes(k)) : Object.keys(object);
-    for (const key of keys) {
-        const value = object[key];
+    const obj = { ...object },
+        keys = options?.exclusions?.length ? Object.keys(obj).filter(k => !options.exclusions?.includes(k)) : Object.keys(obj);
 
-        if (options?.inclusions?.findIndex(x => valsAreEqual(x, value)) !== -1
+    for (const key of keys) {
+        const value = obj[key];
+        if (options?.inclusions?.length && options.inclusions.findIndex(x => valsAreEqual(x, value)) !== -1
             || value === null && options?.null === true
             || value === false && options?.false === true
             || value === '' && options?.string !== false
-            || options?.array === true && Array.isArray(value) && !value.length) delete object[key];
-        else if (value === undefined) {
-            if (options?.undefined === 'toNull') object[key] = null;
-            else delete object[key];
+            || options?.array === true && Array.isArray(value) && !value.length) delete obj[key];
+        if (value === undefined) {
+            if (options?.undefined === 'toNull') obj[key] = null;
+            else delete obj[key];
         }
-        else if (
+        if (
             options?.traverse !== false
             && typeof value === 'object'
             && value !== null
             && !Array.isArray(value)
         ) {
-            if (options?.object !== false) {
-                if (!Object.keys(value).length) delete object[key];
+            if (options?.object === false) {
+                if (!Object.keys(value).length) delete obj[key];
             }
-            else object[key] = objRemoveFalsyProps(value, options);
+            else obj[key] = objRemoveFalsyProps(value, options);
         }
-        else if (options?.function && typeof value === 'function' && !value.length && value() === undefined) delete object[key];
+        else if (options?.function && typeof value === 'function' && !value.length && value() === undefined) delete obj[key];
     }
-    return object;
+    return obj;
 };
 
 
